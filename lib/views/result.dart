@@ -90,7 +90,7 @@ class _ResultPageState extends State<ResultPage> {
                                         fontSize: 28),
                                   ),
                                   TextSpan(
-                                    text: 'ปี',
+                                    text: ' ปี',
                                     style: TextStyle(
                                         fontWeight: FontWeight.normal),
                                   ),
@@ -134,7 +134,7 @@ class _ResultPageState extends State<ResultPage> {
               child: Column(
                 children: [
                   Text(
-                    "เวลาทั้งหมดที่อยู่บนโลกมาแล้วแบบแยกหมวด",
+                    "เวลาทั้งหมดแบบแยกประเภทเวลา",
                     style: TextStyle(
                         color: textColor,
                         fontSize: 18,
