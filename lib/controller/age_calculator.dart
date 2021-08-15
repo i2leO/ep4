@@ -4,16 +4,34 @@ import 'package:intl/intl.dart';
 
 class AgeCalculator {
   /// _daysInMonth cost contains days per months; daysInMonth method to be used instead.
-  static const List<int> _daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
+  static const List<int> _daysInMonth = [
+    31,
+    28,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+  ];
 
   /// isLeapYear method
-  static bool isLeapYear(int year) =>(year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0));
+  static bool isLeapYear(int year) =>
+      (year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0));
 
   /// daysInMonth method
-  static int daysInMonth(int year, int month) =>(month == DateTime.february && isLeapYear(year)) ? 29 : _daysInMonth[month - 1];
+  static int daysInMonth(int year, int month) =>
+      (month == DateTime.february && isLeapYear(year))
+          ? 29
+          : _daysInMonth[month - 1];
 
   /// dateDifference method
-  static DateDuration dateDifference({required DateTime fromDate, required DateTime toDate}) {
+  static DateDuration dateDifference(
+      {required DateTime fromDate, required DateTime toDate}) {
     // Check if toDate to be included in the calculation
     DateTime endDate = toDate;
 
@@ -62,7 +80,8 @@ class AgeCalculator {
   }
 
   /// add method
-  static DateTime add({required DateTime date, required DateDuration duration}) {
+  static DateTime add(
+      {required DateTime date, required DateDuration duration}) {
     int years = date.year + duration.years;
     years += ((date.month + duration.months) ~/ DateTime.monthsPerYear);
     int months = ((date.month + duration.months) % DateTime.monthsPerYear);
@@ -76,10 +95,11 @@ class AgeCalculator {
     return dateDifference(fromDate: birthdate, toDate: today ?? DateTime.now());
   }
 
-  static DateDuration timeToNextBirthday(DateTime birthdate,{DateTime? fromDate}) {
+  static DateDuration timeToNextBirthday(DateTime birthdate,
+      {DateTime? fromDate}) {
     DateTime endDate = fromDate ?? DateTime.now();
     DateTime tempDate = DateTime(endDate.year, birthdate.month, birthdate.day);
-    DateTime nextBirthdayDate = tempDate.isBefore(endDate) 
+    DateTime nextBirthdayDate = tempDate.isBefore(endDate)
         ? AgeCalculator.add(date: tempDate, duration: DateDuration(years: 1))
         : tempDate;
     return dateDifference(fromDate: endDate, toDate: nextBirthdayDate);
@@ -90,34 +110,32 @@ class AgeCalculator {
     to = DateTime(to.year, to.month, to.day);
     return (to.difference(from).inHours / 24).round();
   }
- static int minutesBetween(DateTime from, DateTime to) {
+
+  static int minutesBetween(DateTime from, DateTime to) {
     from = DateTime(from.year, from.month, from.day);
     to = DateTime(to.year, to.month, to.day);
     return (to.difference(from).inMinutes).round();
   }
+
   static int hoursBetween(DateTime from, DateTime to) {
     from = DateTime(from.year, from.month, from.day);
     to = DateTime(to.year, to.month, to.day);
     return (to.difference(from).inHours).round();
   }
 
-
-
-
- static String findDayName() {
+  static String findDayName() {
     var getCurrentYear = selectedCurrentDate.toString().split("-")[0];
     var sp = selectedBithDate.toString().split(' ')[0].split("-");
 
-    String customDate = getCurrentYear + "-"+ sp[1] + "-" + sp[2];
+    String customDate = getCurrentYear + "-" + sp[1] + "-" + sp[2];
     var parsedDate = DateTime.parse('$customDate 00:00:00.000');
 
     if (parsedDate.isBefore(selectedCurrentDate)) {
       var nextYear = int.parse(getCurrentYear);
-      String customDate = (nextYear + 1).toString() + "-"+ sp[1] + "-" + sp[2];
+      String customDate = (nextYear + 1).toString() + "-" + sp[1] + "-" + sp[2];
       var parsedDate = DateTime.parse('$customDate 00:00:00.000');
-      return DateFormat('EEEE').format(parsedDate);
+      return DateFormat('Long').format(parsedDate);
     }
-    return DateFormat('EEEE').format(parsedDate);
-
+    return DateFormat('Long').format(parsedDate);
   }
 }

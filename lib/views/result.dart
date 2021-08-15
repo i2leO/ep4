@@ -98,7 +98,7 @@ class _ResultPageState extends State<ResultPage> {
                               ),
                             ),
                             Text(
-                                "${AgeCalculator.age(selectedBithDate, today: selectedCurrentDate).months.toString()} เดือน: | ${AgeCalculator.age(selectedBithDate, today: selectedCurrentDate).days.toString()} วัน:"),
+                                "${AgeCalculator.age(selectedBithDate, today: selectedCurrentDate).months.toString()} เดือน | ${AgeCalculator.age(selectedBithDate, today: selectedCurrentDate).days.toString()} วัน"),
                           ],
                         ),
                       ),
