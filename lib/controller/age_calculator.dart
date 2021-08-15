@@ -134,8 +134,8 @@ class AgeCalculator {
       var nextYear = int.parse(getCurrentYear);
       String customDate = (nextYear + 1).toString() + "-" + sp[1] + "-" + sp[2];
       var parsedDate = DateTime.parse('$customDate 00:00:00.000');
-      return DateFormat('EEEE').format(parsedDate);
+      return DateFormat('d MMM y').format(parsedDate);
     }
-    return DateFormat('EEEE').format(parsedDate);
+    return DateFormat('d MMM y').format(parsedDate);
   }
 }
