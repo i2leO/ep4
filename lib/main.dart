@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       supportedLocales: [
         const Locale('en', 'US'), // English
-        const Locale('th', 'TH'), // Thailand
+        // const Locale('th', 'TH'), // Thailand
       ],
       debugShowCheckedModeBanner: false,
       title: 'แอพคำนวณอายุ',
